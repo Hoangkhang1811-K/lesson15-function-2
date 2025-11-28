@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra số nguyên tố</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        pre { background: #f0f0f0; padding: 10px; white-space: pre-wrap; }
+        button { padding: 6px 12px; }
+    </style>
+</head>
+<body>
+
+<h2>🔍 Tìm tất cả số nguyên tố nhỏ hơn 100</h2>
+
+<button onclick="findPrimes()">Chạy chương trình</button>
+
+<pre id="output"></pre>
+
+<script>
+    // Hàm kiểm tra số nguyên tố
+    function isPrime(number) {
+        if (number < 2) return false;
+        if (number === 2) return true;
+        if (number % 2 === 0) return false;
+
+        let limit = Math.sqrt(number);
+        for (let i = 3; i <= limit; i += 2) {
+            if (number % i === 0) return false;
+        }
+        return true;
+    }
+
+    // Tìm tất cả số nguyên tố < 100
+    function findPrimes() {
+        let primes = [];
+        for (let i = 2; i < 100; i++) {
+            if (isPrime(i)) primes.push(i);
+        }
+        document.getElementById("output").textContent =
+            "Tổng số nguyên tố: " + primes.length + "\n\n" + primes.join(", ");
+    }
+</script>
+
+</body>
+</html>
